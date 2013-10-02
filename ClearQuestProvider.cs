@@ -11,7 +11,7 @@ namespace Inedo.BuildMasterExtensions.Rational
     /// <summary>
     /// Connects to the Rational ClearQuest issue tracking system.
     /// </summary>
-    [ProviderProperties("Rational ClearQuest", "Supports Rational ClearQuest 7.1 and later; requires ClearQuest client to be installed.")]
+    [ProviderProperties("Rational ClearQuest", "Supports Rational ClearQuest 7.1 and later; requires ClearQuest client to be installed.", RequiresTransparentProxy = true)]
     [CustomEditor(typeof(ClearQuestProviderEditor))]
     internal sealed class ClearQuestProvider : IssueTrackingProviderBase, ICategoryFilterable
     {
@@ -105,7 +105,7 @@ namespace Inedo.BuildMasterExtensions.Rational
         /// </summary>
         /// <param name="releaseNumber"></param>
         /// <returns></returns>
-        public override Issue[] GetIssues(string releaseNumber)
+        public override IssueTrackerIssue[] GetIssues(string releaseNumber)
         {
             var filter = new Dictionary<string, object>();
 
@@ -143,7 +143,7 @@ namespace Inedo.BuildMasterExtensions.Rational
         /// </summary>
         /// <param name="issue"></param>
         /// <returns></returns>
-        public override bool IsIssueClosed(Issue issue)
+        public override bool IsIssueClosed(IssueTrackerIssue issue)
         {
             return string.Equals(issue.IssueStatus, "Closed", StringComparison.CurrentCultureIgnoreCase);
         }
@@ -197,7 +197,7 @@ namespace Inedo.BuildMasterExtensions.Rational
         /// The nesting level (i.e. <see cref="CategoryBase.SubCategories"/>) can never be less than
         /// the length of <see cref="CategoryTypeNames"/>
         /// </remarks>
-        public CategoryBase[] GetCategories()
+        public IssueTrackerCategory[] GetCategories()
         {
             using (var session = ClearQuestSession.Connect(this.UserName, this.Password, this.Database))
             {

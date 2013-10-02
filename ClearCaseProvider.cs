@@ -18,9 +18,10 @@ namespace Inedo.BuildMasterExtensions.Rational
     /// </summary>
     [ProviderProperties(
         "Rational ClearCase",
-        "Provides functionality for getting files, browsing folders, and applying labels in Rational ClearCase.")]
+        "Provides functionality for getting files, browsing folders, and applying labels in Rational ClearCase.",
+        RequiresTransparentProxy = true)]
     [CustomEditor(typeof(ClearCaseProviderEditor))]
-    public sealed class ClearCaseProvider : SourceControlProviderBase, IVersioningProvider
+    public sealed class ClearCaseProvider : SourceControlProviderBase, ILabelingProvider
     {
         /// <summary>
         /// Regular expression used to match output of the LS command.

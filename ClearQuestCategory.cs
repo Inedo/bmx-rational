@@ -7,7 +7,7 @@ namespace Inedo.BuildMasterExtensions.Rational
     /// Represents an issue category in ClearQuest.
     /// </summary>
     [Serializable]
-    internal sealed class ClearQuestCategory : CategoryBase
+    internal sealed class ClearQuestCategory : IssueTrackerCategory
     {
         /// <summary>
         /// Initializes a new instance of the <see cref="ClearQuestCategory"/> class.
@@ -15,7 +15,7 @@ namespace Inedo.BuildMasterExtensions.Rational
         /// <param name="id">The id.</param>
         /// <param name="name">The name.</param>
         public ClearQuestCategory(string id, string name)
-            : base(id, name, null)
+            : base(id, name)
         {
         }
     }

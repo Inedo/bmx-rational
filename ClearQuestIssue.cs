@@ -7,7 +7,7 @@ namespace Inedo.BuildMasterExtensions.Rational
     /// Represents an issue in ClearQuest.
     /// </summary>
     [Serializable]
-    internal sealed class ClearQuestIssue : Issue
+    internal sealed class ClearQuestIssue : IssueTrackerIssue
     {
         /// <summary>
         /// Initializes a new instance of the <see cref="ClearQuestIssue"/> class.
